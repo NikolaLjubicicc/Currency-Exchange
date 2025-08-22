@@ -2,6 +2,7 @@ package currencyExchange;
 
 import java.util.List;
 
+import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,8 @@ public class CurrencyExchangeServiceImpl implements CurrencyExchangeService{
 
 	@Autowired
 	private CurrencyExchangeRepository repo;
+	@Autowired
+	private Environment environment;
 	
 	@Override
 	public ResponseEntity<?> getCurrencyExchange(String from, String to) {
@@ -39,6 +42,7 @@ public class CurrencyExchangeServiceImpl implements CurrencyExchangeService{
 		}
 		
 		CurrencyExchangeDto dto = new CurrencyExchangeDto(dbResponse.getFrom(), dbResponse.getTo(), dbResponse.getExchangeRate());
+		dto.setPort(environment.getProperty("local.server.port"));
 		return ResponseEntity.ok(dto);
 		
 	}

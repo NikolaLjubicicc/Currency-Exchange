@@ -7,6 +7,7 @@ public class CurrencyConversionDto {
 	private CurrencyExchangeDto exchange;
 	private BigDecimal quantity;
 	private ConversionResult conversionResult;
+	private boolean feign;
 	
 	
 	public CurrencyConversionDto() {
@@ -22,6 +23,15 @@ public class CurrencyConversionDto {
 		this.conversionResult = result;
 	}
 
+	
+
+	public boolean isFeign() {
+		return feign;
+	}
+
+	public void setFeign(boolean feign) {
+		this.feign = feign;
+	}
 
 	public CurrencyExchangeDto getExchange() {
 		return exchange;
