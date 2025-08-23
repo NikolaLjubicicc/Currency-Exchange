@@ -36,6 +36,7 @@
 		    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		    <version>4.3.0</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>soas.util</groupId>
 			<artifactId>util</artifactId>
