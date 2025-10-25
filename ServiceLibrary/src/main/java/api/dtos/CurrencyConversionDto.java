@@ -8,8 +8,10 @@ public class CurrencyConversionDto {
 	private BigDecimal quantity;
 	private ConversionResult conversionResult;
 	private boolean feign;
-	
-	
+	private String transactionDescription;
+	private BankAccountDto bankAccountAfterTransaction;
+
+
 	public CurrencyConversionDto() {
 
 	}
@@ -18,7 +20,7 @@ public class CurrencyConversionDto {
 		super();
 		this.exchange = exchange;
 		this.quantity = quantity;
-		CurrencyConversionDto.ConversionResult result = 
+		CurrencyConversionDto.ConversionResult result =
 				new CurrencyConversionDto.ConversionResult(exchange.getTo(),quantity.multiply(exchange.getExchangeRate()));
 		this.conversionResult = result;
 	}
@@ -57,16 +59,32 @@ public class CurrencyConversionDto {
 		this.conversionResult = conversionResult;
 	}
 
+	public String getTransactionDescription() {
+		return transactionDescription;
+	}
+
+	public void setTransactionDescription(String transactionDescription) {
+		this.transactionDescription = transactionDescription;
+	}
+
+	public BankAccountDto getBankAccountAfterTransaction() {
+		return bankAccountAfterTransaction;
+	}
+
+	public void setBankAccountAfterTransaction(BankAccountDto bankAccountAfterTransaction) {
+		this.bankAccountAfterTransaction = bankAccountAfterTransaction;
+	}
 
 
-	private class ConversionResult {
+
+	public static class ConversionResult {
 		private String to;
 		private BigDecimal convertedAmount;
-		
+
 		public ConversionResult() {
-			
+
 		}
-		
+
 		public ConversionResult(String to, BigDecimal convertedAmount) {
 			super();
 			this.to = to;
@@ -88,8 +106,8 @@ public class CurrencyConversionDto {
 		public void setConvertedAmount(BigDecimal convertedAmount) {
 			this.convertedAmount = convertedAmount;
 		}
-		
-		
-		
+
+
+
 	}
 }

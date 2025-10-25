@@ -40,5 +40,12 @@ public class GlobalExceptionHandler {
 				.body(new ExceptionModel(ex.getMessage(), "You can exchange up to 300 units of a single currency",
 						HttpStatus.BAD_REQUEST));
 	}
-		
+
+	@ExceptionHandler(InsufficientFundsException.class)
+	public ResponseEntity<?> handleInsufficientFunds(InsufficientFundsException ex){
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+				.body(new ExceptionModel(ex.getMessage(), "Insufficient funds in your account for this transaction",
+						HttpStatus.BAD_REQUEST));
+	}
+
 }
